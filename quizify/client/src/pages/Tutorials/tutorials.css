@@ -1,0 +1,52 @@
+.tutorials {
+    min-height: 90.5vh;
+    padding: 2rem 6.2rem;
+    box-sizing: border-box;
+    background-color: #EEEEEE;
+}
+
+.tutorials h3 {
+    font-size: 1.5rem;
+}
+
+.tutorialBox {
+    background-color: white;
+    min-height: 37vh;
+    width: 26vw;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.tutorialBox:hover {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(80, 80, 255);
+}
+
+.tutorialVideo {
+    width: 26.5vw;
+    height: 29vh;
+}
+
+.tutorialTitle {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tutorialsContainer {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1rem 0rem;
+    flex-wrap: wrap;
+    row-gap: 1.5rem;
+    column-gap: 3.15rem;
+}
