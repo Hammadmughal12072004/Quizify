@@ -9,6 +9,7 @@ const examRoute = require('./routes/Exam');
 const mcqsRoute = require('./routes/mcq'); // Import the mcqs route
 const tutorialRoute = require('./routes/Tutorial');
 require('dotenv').config();
+const path = require("path");
 
 mongoose.set('strictQuery', false);
 
@@ -35,6 +36,11 @@ app.use('/exam', examRoute);
 app.use('/userexams', userExamsRoute);
 app.use('/mcqs', mcqsRoute); // Use the mcqs route
 app.use('/tutorials', tutorialRoute);
+
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "client", "build")));
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 
 const PORT = process.env.PORT || 5000; // Use environment port or 5000 as default
 app.listen(PORT, () => {
