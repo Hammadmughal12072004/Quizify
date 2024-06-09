@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRoute = require('./routes/User');
@@ -11,14 +10,24 @@ const mcqsRoute = require('./routes/mcq'); // Import the mcqs route
 const tutorialRoute = require('./routes/Tutorial');
 require('dotenv').config();
 
+mongoose.set('strictQuery', false);
+
+const uri = process.env.DATABASE_ACCESS; // Use MongoDB Atlas connection string from .env file
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('Connected to MongoDB Atlas');
+})
+.catch(err => {
+  console.error('Error connecting to MongoDB Atlas', err);
+});
+
+const app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
-
-mongoose.connect(process.env.DATABASE_ACCESS).then(data => {
-    console.log("connected to DB");
-}).catch(error => {
-    console.log(error);
-});
 
 app.use('/users', userRoute);
 app.use('/examquestions', examQuestionsRoute);
@@ -27,6 +36,7 @@ app.use('/userexams', userExamsRoute);
 app.use('/mcqs', mcqsRoute); // Use the mcqs route
 app.use('/tutorials', tutorialRoute);
 
-app.listen(5000, () => {
-    console.log('Server started on 5000');
+const PORT = process.env.PORT || 5000; // Use environment port or 5000 as default
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
