@@ -84,7 +84,7 @@ const Question = ({
   }, [])
 
   const handleCreatorUser = async () => {
-    const { data } = await axios.get('http://localhost:5000/exam/exam/' + id.id)
+    const { data } = await axios.get(`${window.location.origin}/exam/exam/` + id.id)
     setPass(data[0].creatorUserId == userId)
     setIsLoading(false)
   }
@@ -123,7 +123,7 @@ const Question = ({
         examId: id.id,
         grade: score,
       };
-      axios.patch(`http://localhost:5000/userexams/${exam_id}`, userExam).then((response) => {
+      axios.patch(`${window.location.origin}/userexams/${exam_id}`, userExam).then((response) => {
         console.log(response.status);
         console.log(response.data);
       });
@@ -141,7 +141,7 @@ const Question = ({
           qTitle: questions[currQues].questionTitle,
         }
       };
-      axios.put(`http://localhost:5000/userexams/${exam_id}`, userOptions).then((response) => {
+      axios.put(`${window.location.origin}/userexams/${exam_id}`, userOptions).then((response) => {
         console.log(response.status);
         console.log(response.data);
       });
@@ -184,7 +184,7 @@ const Question = ({
           </button>
         </Control>
       </SingleQuestion>
-    </Container >
+    </Container>
   );
 };
 

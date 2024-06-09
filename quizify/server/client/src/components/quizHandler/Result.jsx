@@ -27,9 +27,9 @@ const Result = () => {
 
   const getExamNames = async () => {
     try {
-      const data = await axios.get(`http://localhost:5000/userexams/exam/${id}`);
+      const data = await axios.get(`${window.location.origin}/userexams/exam/${id}`);
       setScore(data);
-      const { data: passGradeData } = await axios.get(`http://localhost:5000/exam/exam/${id}`);
+      const { data: passGradeData } = await axios.get(`${window.location.origin}/exam/exam/${id}`);
       setPassGrade(passGradeData);
       setIsLoading(false);
     } catch (error) {
