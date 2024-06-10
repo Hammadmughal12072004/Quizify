@@ -37,10 +37,10 @@ app.use('/userexams', userExamsRoute);
 app.use('/mcqs', mcqsRoute); // Use the mcqs route
 app.use('/tutorials', tutorialRoute);
 
-app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "client", "build")));
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
+//app.get("/", (req, res) => {
+  //app.use(express.static(path.resolve(__dirname, "client", "build")));
+  //res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  //});
 
 
 
